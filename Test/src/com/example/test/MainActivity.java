@@ -17,7 +17,6 @@ import android.nfc.Tag;
 import android.nfc.tech.Ndef;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.RemoteException;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.bluetooth.BluetoothAdapter;
@@ -55,8 +54,6 @@ public class MainActivity extends Activity {
 		initBT();
 		initNFC();
 		
-		//_myUuid = UUID.fromString("GyMate.");
-         
         handleIntent(getIntent());
 		
 	}
