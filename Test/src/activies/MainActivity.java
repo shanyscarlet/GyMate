@@ -1,4 +1,4 @@
-package com.example.test;
+package activies;
 
 import java.io.DataInputStream;
 import java.io.IOException;
@@ -8,6 +8,7 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.UUID;
 
+import com.example.test.R;
 import com.example.test.R.string;
 
 import android.nfc.NdefMessage;
