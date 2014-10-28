@@ -143,4 +143,8 @@ public class NFCControl{
          
         _nfcAdapter.enableForegroundDispatch(activity, pendingIntent, filters, techList);
     }
+    
+    public static void stopForegroundDispatch(final Activity activity) {
+        _nfcAdapter.disableForegroundDispatch(activity);
+    }
 }

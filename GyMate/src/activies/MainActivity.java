@@ -78,7 +78,7 @@ public class MainActivity extends Activity {
         /**
          * Call this before onPause, otherwise an IllegalArgumentException is thrown as well.
          */
-        //stopForegroundDispatch(this, _nfcAdapter);
+        _nfcController.stopForegroundDispatch(this);
          
         super.onPause();
     }
