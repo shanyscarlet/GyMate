@@ -2,10 +2,10 @@
 <resources>
 
     <string name="app_name">GyMate</string>
+    <string name="nfc_is_disabled">Please activate NFC and press Back to return to the application!</string>
     <string name="action_settings">Settings</string>
     <string name="nfc_ready">NFC is ready</string>
     <string name="nfc_not_supported">NFC is not supported on this device</string>
-    <string name="help">help</string>
+    <string name="help">Help</string>
     <string name="restart">Restart</string>
-
 </resources>
