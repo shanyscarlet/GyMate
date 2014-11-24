@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.test"
+    package="com.gen.gymate"
     android:versionCode="1"
     android:versionName="1.0" >
 	 
@@ -10,42 +10,50 @@
         />
 	
 		<uses-permission android:name="android.permission.BLUETOOTH"/>
-	    
     	<uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 		<uses-permission android:name="android.permission.NFC" />
     
     <application
+        android:launchMode="singleTop"
         android:allowBackup="true"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme"
+        android:icon="@drawable/logo">
+        
         
         <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    	<item android:id="@+id/restart"
-          android:title="@string/restart"
-          android:showAsAction="ifRoom"/>
-    	<item android:id="@+id/help"
-          android:title="@string/help" />
+    		<item android:id="@+id/restart"
+          		android:title="@string/restart"
+          		android:showAsAction="ifRoom"/>
+    		<item android:id="@+id/help"
+          		android:title="@string/help" />
         </menu>
         <activity
-            android:name="activies.MainActivity"
-            android:label="@string/app_name" >
+            android:name="activities.Splash"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            
-          	<intent-filter>
+        </activity>"
+        <activity android:name="activities.MainActivity">
+            <intent-filter>
+                <action android:name="activities.MainActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
         		<action android:name="android.nfc.action.NDEF_DISCOVERED" />
-        		 
    				<category android:name="android.intent.category.DEFAULT" />
- 
-    			<data android:mimeType="text/plain" />
+    			<data android:mimeType="text/plain"/>
     		</intent-filter>
     
        	    <meta-data
        			android:name="android.nfc.action.TECH_DISCOVERED"
        			android:resource="@xml/nfc_tech_filter" />
+       	    </activity>
        	    
+        <activity android:name="activities.Training">
+            
         </activity>
     </application>
 

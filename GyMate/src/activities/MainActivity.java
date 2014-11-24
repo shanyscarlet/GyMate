@@ -1,18 +1,23 @@
-package activies;
+package activities;
 
 import java.io.UnsupportedEncodingException;
+
+import utils.BluetoothUtils.eBluetoothStatus;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.example.test.R;
+
+import com.gen.gymate.R;
+
 import controllers.BluetoothController;
-import controllers.BluetoothController.eBluetoothStatus;
 import controllers.NFCControl;
 
 public class MainActivity extends Activity {
@@ -20,9 +25,9 @@ public class MainActivity extends Activity {
 	private NFCControl _nfcController;
 	private BluetoothController _btConroller;
 	private TextView _nfcDataTextView;
+	
 	//private UUID _myUuid = UUID.randomUUID();
 	//private NfcAdapter _nfcAdapter;
-	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +48,13 @@ public class MainActivity extends Activity {
 					break;
 				case NFC_OK:
 					_nfcDataTextView = (TextView)findViewById(R.id.nfcDataText);
-					_nfcDataTextView.setText(R.string.nfc_ready);
+					if(getIntent().getExtras() == null){
+						_nfcDataTextView.setText(R.string.nfc_ready);
+					}
+					else
+					{
+						_nfcDataTextView.setText((String)getIntent().getExtras().get(Intent.EXTRA_STREAM));
+					}
 					
 					if(_btConroller.initBT() == eBluetoothStatus.BT_DISABLED)
 					{
@@ -60,8 +71,10 @@ public class MainActivity extends Activity {
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			}
-			}
-
+			Button StartTraining = (Button)findViewById(R.id.btnShowHistory);
+			
+	}
+	
 	@Override
     protected void onResume() {
         super.onResume();
@@ -71,6 +84,7 @@ public class MainActivity extends Activity {
          * an IllegalStateException is thrown. 
          */
         _nfcController.setupForegroundDispatch(this);
+        //_nfcController.get_nfcAdapter().enableForegroundDispatch(this, intent, filters, techLists)
     }
      
     @Override
@@ -89,7 +103,7 @@ public class MainActivity extends Activity {
         /**
          * This method gets called, when a new Intent gets associated with the current activity instance.
          * Instead of creating a new activity, onNewIntent will be called. For more information have a look
-         * at the docum entation.
+         * at the documentation.
          * 
          * In our case this method gets called, when the user attaches a Tag to the device.
          */

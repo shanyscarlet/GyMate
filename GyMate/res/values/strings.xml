@@ -8,4 +8,9 @@
     <string name="nfc_not_supported">NFC is not supported on this device</string>
     <string name="help">Help</string>
     <string name="restart">Restart</string>
+    <string name="Disconnect">Disconnect</string>
+    <string name="Exit">Exit App</string>
+    <string name="button">Button</string>
+    <string name="ExerciseTitle">Number Of exercises made: </string>
+    
 </resources>

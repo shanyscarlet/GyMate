@@ -16,8 +16,6 @@ import android.nfc.Tag;
 import android.nfc.tech.Ndef;
 import android.widget.TextView;
 
-import com.example.test.R.string;
-
 public class NFCControl{
 	
 	public enum eNfcStatus{
@@ -144,7 +142,7 @@ public class NFCControl{
         _nfcAdapter.enableForegroundDispatch(activity, pendingIntent, filters, techList);
     }
     
-    public static void stopForegroundDispatch(final Activity activity) {
+    public void stopForegroundDispatch(final Activity activity) {
         _nfcAdapter.disableForegroundDispatch(activity);
     }
 }

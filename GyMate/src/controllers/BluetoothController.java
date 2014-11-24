@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Method;
 import java.util.Scanner;
+
+import utils.BluetoothUtils.eBluetoothStatus;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
@@ -19,9 +21,11 @@ public class BluetoothController {
 	private Context _ctx;
 	private Handler _handler;
 	private ConnectThread _btThread;
+	private eBluetoothStatus _btStatus;
 	
-	public enum eBluetoothStatus {
-		BT_NOT_INITIALIZED, BT_OK, BT_DISABLED, BT_NOT_SUPPORTED;
+	
+	public eBluetoothStatus getBTStatus() {
+		return _btStatus;
 	}
 	
 	public BluetoothDevice get_btDevice() {
@@ -107,8 +111,11 @@ public class BluetoothController {
 		} else if (!_btAdapter.isEnabled()) {
 			resultBTStatus = eBluetoothStatus.BT_DISABLED;
 		}
+		
+		_btStatus = resultBTStatus;
 		return resultBTStatus;
 	}
+	
 	
 	static String convertStreamToString(InputStream i_InputStream) {
 	    Scanner s = new Scanner(i_InputStream).useDelimiter("\n");
@@ -129,7 +136,8 @@ public class BluetoothController {
 					
 						@Override
 						public void run() {
-							Toast.makeText(_ctx, fMessage, Toast.LENGTH_SHORT).show();
+							Toast.makeText(_ctx, "Number of returns: " + fMessage, Toast.LENGTH_SHORT).show();
+							
 						}
 					});
 				}
